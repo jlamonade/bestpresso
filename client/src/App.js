@@ -27,10 +27,16 @@ function App() {
     setEspressoData([...espressoData, shot])
   };
 
+  const callAPI = async () => {
+    const res = await fetch("http://localhost:9000/testAPI")
+    console.log(await res.text())
+  }
+
   return (
     <div className="container">
       <Header />
       <button className="btn btn-primary">Add Shot</button>
+      <button onClick={callAPI}>Test API</button>
       <ShotForm onAdd={addShot} />
       <Shots espressoData={espressoData} />
     </div>
