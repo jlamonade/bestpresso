@@ -1,23 +1,38 @@
 import "./App.css";
 // import Nav from "./components/Nav";
-import Header from './components/Header'
-import Shots from './components/Shots'
+import Header from "./components/Header";
+import Shots from "./components/Shots";
+import ShotForm from "./components/ShotForm";
 
 function App() {
   const espressoData = [
     {
-      date: '6/10/21',
+      date: "6/10/21",
       beansWeight: 16,
       espressoWeight: 33.6,
-      ratio: String(1 / (33.6 / 16)),
-      flavor: 'bold'
-    }
-  ]
+      ratio: 33.6 / 16,
+      flavor: "bitter",
+    },
+    {
+      date: "6/11/21",
+      beansWeight: 16,
+      espressoWeight: 32.1,
+      ratio: (32.1 / 16).toFixed(1),
+      flavor: "sour",
+    },
+  ];
+
+  const addShot = (e) => {
+    e.preventDefault();
+    console.log("add shot");
+  };
 
   return (
     <div className="container">
       <Header />
-      <Shots espressoData={ espressoData }/>
+      <button className="btn btn-primary">Add Shot</button>
+      <ShotForm onSubmit={addShot} />
+      <Shots espressoData={espressoData} />
     </div>
   );
 }
