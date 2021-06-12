@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import Nav from "./components/Nav";
+import Header from './components/Header'
+import Shots from './components/Shots'
 
 function App() {
+  const espressoData = [
+    {
+      date: '6/10/21',
+      beansWeight: 16,
+      espressoWeight: 33.6,
+      ratio: String(1 / (33.6 / 16)),
+      flavor: 'bold'
+    }
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Shots espressoData={ espressoData }/>
     </div>
   );
 }
