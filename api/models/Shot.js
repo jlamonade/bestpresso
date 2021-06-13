@@ -7,40 +7,45 @@ const shotSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  grindWeight: {
+  dose: {
     type: Number,
     trim: true,
+    required: "Dosage is required",
   },
-  outputWeight: {
+  yield: {
     type: Number,
     trim: true,
+    required: "Yield is required",
   },
-  grindSetting: {
+  grind: {
     type: String,
     trim: true,
   },
-  brewRatio: this.outputWeight / this.grindWeight,
-  brewTime: {
+  extractionTime: {
     type: Number,
     trim: true,
   },
-  flavorProfile: {
-    bitterness: {
+  flavor: {
+    bitter: {
       type: Number,
       trim: true,
     },
-    acidity: {
+    sour: {
       type: Number,
       trim: true,
     },
-    sweetness: {
+    sweet: {
       type: Number,
       trim: true,
     },
-    bean: {
-      type: Schema.Types.ObjectId,
-      ref: "Bean",
+    salty: {
+      type: Number,
+      trim: true,
     },
+  },
+  bean: {
+    type: Schema.Types.ObjectId,
+    ref: "Bean",
   },
 });
 

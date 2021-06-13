@@ -34,8 +34,8 @@ function App() {
   };
 
   const callAPI = async () => {
-    const res = await fetch("http://localhost:9000/testAPI")
-    console.log(await res.text())
+    const res = await fetch("http://localhost:9000/beans/shots")
+    console.log(await res.json())
   }
 
   return (

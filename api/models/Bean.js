@@ -6,7 +6,7 @@ const beanSchema = new Schema({
   name: {
     type: String,
     trim: true,
-    require: "Please enter a valid bean name",
+    required: "Please enter a valid bean name",
   },
   user: {
     type: Schema.Types.ObjectId,
