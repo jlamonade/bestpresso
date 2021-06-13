@@ -6,18 +6,22 @@ const Shot = require("../models/Shot");
 router.get("/", async (req, res) => {
   try {
     const beanData = await Bean.find({ user: req.session.passport.user });
-    res.json(beanData);
+    res.status(200).json(beanData);
   } catch (err) {
-    res.send({ error: "Cannot Get Beans." });
+    res.status(500).send({ error: "Cannot Get Beans." });
   }
 });
 
 // create bean
 router.post("/", async (req, res) => {
-  req.body.user = req.session.passport.user;
-  const beanData = await Bean.create(req.body);
-  if (!beanData[0]) res.json(beanData);
-  else res.json("Bean Not Added.");
+  try {
+    req.body.user = req.session.passport.user;
+    const beanData = await Bean.create(req.body);
+    if (!beanData[0]) res.status(200).json(beanData);
+    else res.status(400).json("Bean Not Added.");
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 // delete bean
@@ -41,8 +45,12 @@ router.post("/", async (req, res) => {
 }
 */
 router.post("/shots", async (req, res) => {
-  const shotData = await Shot.create(req.body);
-  res.json(shotData);
+  try {
+    const shotData = await Shot.create(req.body);
+    res.status(200).json(shotData);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 // GET get shots by bean
@@ -53,10 +61,14 @@ router.post("/shots", async (req, res) => {
 }
 */
 router.get("/shots", async (req, res) => {
-  // TODO aggregate this method
-  const shotData = await Shot.find(/* { bean: req.body.bean } */);
-  if (shotData) return res.json(shotData);
-  res.status(500).send({ error: "Bean Not Found." });
+  // TODO aggregate this method to get extraction ratio
+  try {
+    const shotData = await Shot.find({ bean: req.body.bean });
+    if (shotData) return res.json(shotData);
+    res.status(500).send({ error: "Bean Not Found." });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;
