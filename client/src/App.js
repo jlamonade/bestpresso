@@ -8,18 +8,24 @@ import ShotForm from "./components/ShotForm";
 function App() {
   const [espressoData, setEspressoData] = useState([
     {
+      _id: 1,
       date: "6/10/21",
       beansWeight: 16,
       espressoWeight: 33.6,
+      brewTime: 37,
       ratio: 33.6 / 16,
       flavor: "bitter",
+      grind: 2
     },
     {
+      _id: 2,
       date: "6/11/21",
       beansWeight: 16,
       espressoWeight: 32.1,
+      brewTime: 23,
       ratio: (32.1 / 16).toFixed(1),
       flavor: "sour",
+      grind: 3
     },
   ])
 

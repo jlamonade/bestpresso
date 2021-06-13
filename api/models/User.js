@@ -12,6 +12,7 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     require: "Please enter a valid email.",
+    // eslint-disable-next-line no-useless-escape
     match: [/.+\@.+\..+/],
     unique: true,
   },

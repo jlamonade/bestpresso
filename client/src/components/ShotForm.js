@@ -16,17 +16,7 @@ const ShotForm = ({ onAdd }) => {
   }
 
   return (
-    <form className="my-3" onSubmit={onSubmit}>
-      <label className="form-label">Date</label>
-      <input
-        type="date"
-        className="form-control"
-        placeholder="Enter Date"
-        value={date}
-        onChange={(e) => {
-          setDate(e.target.value)
-        }}
-      ></input>
+    <form className="my-2" onSubmit={onSubmit}>
       <label className="form-label">Beans Weight</label>
       <input
         type="number"
