@@ -55,20 +55,6 @@ router.post('/register', async (req, res) => {
 /* POST users listing. */
 /* Logging in route */
 router.post('/login', async (req, res) => {
-  // try {
-  //   const user = await User.findOne({ email: req.body.email })
-  //   if (!user) {
-  //     return res.status(400).send({ message: 'User does not exist' })
-  //   }
-  //   if(!bcrypt.compareSync(req.body.password, user.password)) {
-  //     return res.status(400).send({ message: 'Incorrect password'})
-  //   }
-  //   // if email and password are correct then
-  //   res.send({ message: 'Username and password are correct!' })
-  // } catch (err) {
-  //   res.status(500).send(err)
-  // }
-
   passport.authenticate('local', (err, user) => {
     if (err) {
       return res.status(400).jason({ errors: err })
